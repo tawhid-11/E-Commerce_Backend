@@ -28,11 +28,13 @@ namespace E_Commerce_Backend.API.Controllers
                 return NotFound();
             return Ok(category);
         }
+        [HttpPost]
         public async Task<IActionResult> Create(CreateCategoryDto createCategoryDto)
         {
             var id = await _categoryService.CreateCategoryAsync(createCategoryDto);
             return CreatedAtAction(nameof(GetById), new { id = id }, createCategoryDto);
         }
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdateCategoryDto updateCategoryDto)
         {
             if (id != updateCategoryDto.Id)
@@ -42,6 +44,7 @@ namespace E_Commerce_Backend.API.Controllers
                 return NotFound();
             return NoContent();
         }
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _categoryService.DeleteCategoryAsync(id);
