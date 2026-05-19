@@ -12,7 +12,7 @@ namespace E_Commerce_Backend.Application.Service_Interfaces
         public Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync();
         public Task<CategoryDto?> GetCategoryByIdAsync(int id);
         public Task<int> CreateCategoryAsync(CreateCategoryDto categoryDto);
-        public Task<bool> UpdateCategoryAsync(UpdateCategoryDto categoryDto);
+        public Task<bool> UpdateCategoryAsync( UpdateCategoryDto categoryDto);
         public Task<bool> DeleteCategoryAsync(int id);
     }
 }

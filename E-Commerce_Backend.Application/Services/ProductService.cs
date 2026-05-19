@@ -81,9 +81,10 @@ namespace E_Commerce_Backend.Application.Services
                 throw new ArgumentException("Price must be greater than zero");
             if (upo.Stock < 0)
                 throw new ArgumentException("Stock cannot be negative");
-            var today = DateOnly.FromDateTime(DateTime.Now);
-            if (upo.ExpireDate <= today)
-                throw new ArgumentException("Expire date must be future date");
+            var today = DateTime.Today;
+
+            if (upo.ExpireDate.Date <= today)
+                throw new ArgumentException("Expire date must be a future date");
             if (upo.CategoryId <= 0)
                 throw new ArgumentException("Valid CategoryId is required");
 

@@ -36,6 +36,7 @@ namespace E_Commerce_Backend.API.Controllers
         {
             var id = await _productService.CreateProductAsync(createProductDto);
             return CreatedAtAction(nameof(GetById), new { id = id }, createProductDto);
+       
         }
 
         [HttpPut("{id}")]
@@ -44,7 +45,7 @@ namespace E_Commerce_Backend.API.Controllers
             if (id != updateProductDto.Id) return BadRequest();
             var success = await _productService.UpdateProductAsync(updateProductDto);
             if (!success) return NotFound();
-            return NoContent();
+            return Ok("Product updated successfully");
         }
 
         [HttpDelete("{id}")]
@@ -52,7 +53,7 @@ namespace E_Commerce_Backend.API.Controllers
         {
             var success = await _productService.DeleteProductAsync(id);
             if (!success) return NotFound();
-            return NoContent();
+            return Ok("Product deleted successfully");
         }
     }
 }

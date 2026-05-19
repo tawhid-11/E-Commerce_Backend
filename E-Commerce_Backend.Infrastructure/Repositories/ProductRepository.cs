@@ -47,3 +47,46 @@ namespace E_Commerce_Backend.Infrastructure.Repositories
         }
     }
 }
+//using Dapper;
+//using System.Data;
+//using E_Commerce_Backend.Core.Entities;
+//using E_Commerce_Backend.Infrastructure.Dapper;
+
+//public class ProductRepository
+//{
+//    private readonly AppDapperContext _context;
+
+//    public ProductRepository(AppDapperContext context)
+//    {
+//        _context = context;
+//    }
+
+//    IDbConnection db { get { return _context.CreateConnection(); 
+//        } 
+//    }
+
+//    public Task<IEnumerable<Product>> GetAll()
+//    {
+//        return db.QueryAsync<Product>("sp_Product_GetAll", commandType: CommandType.StoredProcedure);
+//    }
+//    public Task<Product?> GetById(int id)
+//    {
+//        return db.QuerySingleOrDefaultAsync<Product>("sp_Product_GetById", new { Id = id }, commandType: CommandType.StoredProcedure);
+//    }
+
+//    public Task<int> Create(Product p)
+//    {
+//        return db.QuerySingleAsync<int>("sp_Product_Create", p, commandType: CommandType.StoredProcedure);
+//    }
+
+//    public Task<int> Update(Product p)
+//    {
+//        db.ExecuteAsync("sp_Product_Update", p, commandType: CommandType.StoredProcedure);
+//    }
+
+//    public Task<int> Delete(int id)
+//    {
+//        return db.ExecuteAsync("sp_Product_Delete", new { Id = id }, commandType: CommandType.StoredProcedure);
+//    }
+//}
+

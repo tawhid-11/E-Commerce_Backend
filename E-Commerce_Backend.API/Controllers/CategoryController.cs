@@ -42,7 +42,7 @@ namespace E_Commerce_Backend.API.Controllers
             var result = await _categoryService.UpdateCategoryAsync(updateCategoryDto);
             if (!result)
                 return NotFound();
-            return NoContent();
+            return Ok("Category updated successfully");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -50,7 +50,7 @@ namespace E_Commerce_Backend.API.Controllers
             var result = await _categoryService.DeleteCategoryAsync(id);
             if (!result)
                 return NotFound();
-            return NoContent();
+            return Ok("Category deleted successfully");
         }
     }
 }

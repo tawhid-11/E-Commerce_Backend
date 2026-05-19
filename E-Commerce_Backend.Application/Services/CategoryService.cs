@@ -44,14 +44,21 @@ namespace E_Commerce_Backend.Application.Services
             };
             return await _uow.categoryRepository.CreateAsync(category);
         }
-        public async Task<bool> UpdateCategoryAsync(int id, UpdateCategoryDto uco)
+        public async Task<bool> UpdateCategoryAsync( UpdateCategoryDto uco)
         {
-            var existingCategory = await _uow.categoryRepository.GetByIdAsync(id);
-            if (existingCategory == null)
-                return false;
+            if (uco == null)
+                throw new ArgumentNullException(nameof(uco));
+
             if (string.IsNullOrWhiteSpace(uco.Name))
                 throw new ArgumentException("Category name cannot be empty");
+
+            var existingCategory = await _uow.categoryRepository.GetByIdAsync(uco.Id);
+
+            if (existingCategory == null)
+                throw new KeyNotFoundException("Category not found");
+
             existingCategory.Name = uco.Name;
+
             return await _uow.categoryRepository.UpdateAsync(existingCategory);
         }
         public async Task<bool> DeleteCategoryAsync(int id)
@@ -60,11 +67,6 @@ namespace E_Commerce_Backend.Application.Services
             if (existingCategory == null)
                 return false;
             return await _uow.categoryRepository.DeleteAsync(id);
-        }
-
-        public Task<bool> UpdateCategoryAsync(UpdateCategoryDto categoryDto)
-        {
-            throw new NotImplementedException();
         }
 
     }

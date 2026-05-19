@@ -26,7 +26,7 @@ namespace E_Commerce_Backend.Infrastructure.Repositories
         }
         public async Task<int> CreateAsync(Category category)
         {
-            const string query = "insert into Categories(Name) values(@Name); select cast(scopre identity() as int)";
+            const string query = "insert into Categories(Name) values(@Name); select cast(scope_identity() as int)";
             using var connection = _context.CreateConnection();
             return await connection.QuerySingleAsync<int>(query, category);
         }
