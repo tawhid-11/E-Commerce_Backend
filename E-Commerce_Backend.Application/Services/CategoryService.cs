@@ -1,4 +1,4 @@
-﻿using E_Commerce_Backend.Application.Category_Dto;
+using E_Commerce_Backend.Application.Category_Dto;
 using E_Commerce_Backend.Application.Service_Interfaces;
 using E_Commerce_Backend.Application.UOW_Interface;
 using System;
@@ -21,6 +21,7 @@ namespace E_Commerce_Backend.Application.Services
             var categories = await _uow.categoryRepository.GetAllAsync();
             return categories.Select(c => new CategoryDto
             {
+                Id = c.Id,
                 Name = c.Name
             });
         }
@@ -31,6 +32,7 @@ namespace E_Commerce_Backend.Application.Services
                 return null;
             return new CategoryDto
             {
+                Id = c.Id,
                 Name = c.Name
             };
         }

@@ -1,4 +1,4 @@
-﻿using E_Commerce_Backend.Application.Product_Dto;
+using E_Commerce_Backend.Application.Product_Dto;
 using E_Commerce_Backend.Application.Service_Interfaces;
 using E_Commerce_Backend.Application.UOW_Interface;
 using E_Commerce_Backend.Core.Entities;
@@ -17,6 +17,7 @@ namespace E_Commerce_Backend.Application.Services
             var products = await _uow.Productrepository.GetAllAsync();
             return products.Select(p => new ProductDto
             {
+                Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
                 Size = p.Size,
@@ -34,6 +35,7 @@ namespace E_Commerce_Backend.Application.Services
                 return null;
             return new ProductDto
             {
+                Id = p.Id,
                 Name = p.Name,
                 Description = p.Description,
                 Size = p.Size,
@@ -93,6 +95,7 @@ namespace E_Commerce_Backend.Application.Services
                 Id = upo.Id,
                 Name = upo.Name,
                 Description = upo.Description,
+                Size = upo.Size,
                 Price = upo.Price,
                 Stock = upo.Stock,
                 MFG = upo.MFG,

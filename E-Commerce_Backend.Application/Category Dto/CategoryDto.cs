@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ namespace E_Commerce_Backend.Application.Category_Dto
 {
     public class CategoryDto
     {
+        public int Id { get; set; }
         public string Name { get; set; } = null!;
     }
 }
